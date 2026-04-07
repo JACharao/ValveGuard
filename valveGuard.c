@@ -3,24 +3,36 @@
 
 int main() {
 
-    FILE *arquivo;
-    char linha[100];
-    long memoria_total;
+    FILE *file;
+    char line[100];
+    long total = 0, free = 0, used = 0;
     
-    arquivo = fopen("/proc/meminfo", "r");  
+    file = fopen("/proc/meminfo", "r");  
 
-    if(arquivo == NULL) {
-        printf("Erro ao acessar o sistema de arquivos do Kernel\n");
+    if(file == NULL) {
+        printf("Error accessing the Kernel file system.\n");
         return 1;
     }
     
-    if(fgets(linha, sizeof(linha), arquivo)) {
+    if(fgets(line, sizeof(line), file)) {
+        sscanf(line, "MemTotal: %ld", &total);
+    }
 
-        sscanf(linha, "MemTotal: %ld", &memoria_total);
-
-        printf("Valve-Guard: Memória total detectada: %ld MB\n", memoria_total / 1024);
+    if(fgets(line, sizeof(line), file)) {
+        sscanf(line, "MemFree: %ld", &free);
     }
     
-    fclose(arquivo);
+    fclose(file);
+
+    used = total - free;
+
+    printf("==============================\n");
+    printf("       VALVE-GUARD v0.2       \n");
+    printf("==============================\n");
+    printf("Total RAM:  %ld MB\n", total / 1024);
+    printf(" Free RAM:   %ld MB\n", free / 1024);
+    printf(" Used RAM:   %ld MB\n", used / 1024);
+    printf("==============================\n");
+
     return 0;
 }
