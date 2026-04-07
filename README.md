@@ -6,12 +6,19 @@ The project was born from the goal of understanding how the Linux Kernel exposes
 
 ---
 
-## 🚀 Current Features
+## 🚀 Features (v0.3)
 
-- [x] Static RAM Total reading via `/proc/meminfo`.
-- [x] Free and Used Memory calculation.
-- [ ] CPU load monitoring (Planned).
-- [ ] Colorized Terminal Interface (Planned).
+- [x] **CPU Identification:** Detects the processor model using `/proc/cpuinfo`.
+      
+- [x] **Real-time RAM Monitoring:** Reads Total, Free, and Available RAM from `/proc/meminfo`.
+      
+- [x] **System Uptime:** Tracks system session duration via `/proc/uptime`.
+      
+- [x] **Live Dashboard:** Interactive terminal interface with a 1-second refresh rate.
+      
+- [ ] **CPU Load Monitoring:** (Planned).
+      
+- [ ] **Colorized Terminal Interface:** (Planned).
 
 ---
 
@@ -20,7 +27,22 @@ The project was born from the goal of understanding how the Linux Kernel exposes
 * **Language:** C (C11 Standard)
 * **System:** Linux / Ubuntu (WSL2)
 * **Compiler:** GCC
-* **Concepts:** File handling, String parsing, Memory management.
+* **Concepts:** The program uses a `while(1)` loop combined with `usleep/sleep` to poll kernel files. Key concepts applied:
+
+* **File Pointers:** Efficiently navigating through `/proc` text streams.
+  
+* **String Parsing:** Using `sscanf` with format specifiers to isolate numeric data.
+  
+* **ANSI Escape Codes:** `\033[H\033[J` used to refresh the terminal without flickering.
+---
+
+## ⚠️ Important Note on WSL2 
+During development, you might notice that RAM values stay relatively static. This is **expected behavior** in WSL2 because:
+1. **Memory Ballooning:** WSL2 reserves a fixed chunk of Windows RAM.
+   
+2. **Kernel Isolation:** Changes in Windows RAM (like opening Chrome) are not immediately visible inside the Linux VM unless a process is running **inside the Ubuntu environment**.
+   
+3. **Uptime Test:** The "Uptime" counter in this dashboard proves the real-time polling is working correctly.
 
 ---
 
