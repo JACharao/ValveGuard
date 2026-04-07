@@ -30,7 +30,7 @@ Make sure you have `build-essential` installed on your Linux system.
 
 1. **Clone the repository:**
    ```bash
-   git clone [https://github.com/YOUR_USERNAME/valve-guard.git](https://github.com/YOUR_USERNAME/valve-guard.git)
+   git clone [https://github.com/JACharao/valve-guard.git](https://github.com/JACharao/valve-guard.git)
    cd valve-guard
 
 2. **Compile the code:**
