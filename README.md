@@ -9,7 +9,7 @@ The project was born from the goal of understanding how the Linux Kernel exposes
 ## 🚀 Current Features
 
 - [x] Static RAM Total reading via `/proc/meminfo`.
-- [ ] Free and Used Memory calculation (Work in progress).
+- [x] Free and Used Memory calculation.
 - [ ] CPU load monitoring (Planned).
 - [ ] Colorized Terminal Interface (Planned).
 
