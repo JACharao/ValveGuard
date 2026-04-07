@@ -32,3 +32,11 @@ Make sure you have `build-essential` installed on your Linux system.
    ```bash
    git clone [https://github.com/YOUR_USERNAME/valve-guard.git](https://github.com/YOUR_USERNAME/valve-guard.git)
    cd valve-guard
+
+2. **Compile the code:**
+   ```bash
+   gcc valveGuard.c -o valveGuard
+
+3. **Run the executable:**
+   ```bash
+   ./valveGuard
