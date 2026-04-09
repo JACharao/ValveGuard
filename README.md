@@ -6,19 +6,34 @@ The project was born from the goal of understanding how the Linux Kernel exposes
 
 ---
 
-## 🚀 Features (v0.3)
+## 🚀 Features (v0.4)
 
 - [x] **CPU Identification:** Detects the processor model using `/proc/cpuinfo`.
       
 - [x] **Real-time RAM Monitoring:** Reads Total, Free, and Available RAM from `/proc/meminfo`.
       
 - [x] **System Uptime:** Tracks system session duration via `/proc/uptime`.
-      
-- [x] **Live Dashboard:** Interactive terminal interface with a 1-second refresh rate.
+
+- [x] **Dynamic Progress Bar:** Visual representation of RAM usage.
+
+- [x] **Colorized Interface:** ANSI colors for better data visualization.
       
 - [ ] **CPU Load Monitoring:** (Planned).
-      
-- [ ] **Colorized Terminal Interface:** (Planned).
+
+---
+
+## 🎨 Visuals & Interface
+The dashboard uses ANSI Escape Codes to provide a dynamic and color-coded experience based on system load:
+
+Progress Bar: A 20-segment bar [##########----------] that updates every second.
+
+Smart Colors:
+
+🟢 Green: Usage below 50% (Healthy).
+
+🟡 Yellow: Usage between 50% and 80% (Moderate).
+
+🔴 Red: Usage above 80% (Critical).
 
 ---
 
@@ -34,6 +49,7 @@ The project was born from the goal of understanding how the Linux Kernel exposes
 * **String Parsing:** Using `sscanf` with format specifiers to isolate numeric data.
   
 * **ANSI Escape Codes:** `\033[H\033[J` used to refresh the terminal without flickering.
+  
 ---
 
 ## ⚠️ Important Note on WSL2 
